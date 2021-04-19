@@ -153,17 +153,16 @@ package object linalg {
   @tailrec
   def jitChol(X: DenseMatrix[Double],
               jit: Double = 1e-16,
-              jit_max: Double = 1e-3,
-              copy: Boolean): DenseMatrix[Double] = {
+              jit_max: Double = 1e-3): DenseMatrix[Double] = {
     try {
-      cholesky(X, copy)
+      cholesky(X, true)
     } catch {
       case e: NotConvergedException =>
         if (jit > jit_max) {
           throw e
         } else {
           val diagDelta = jit * mean(diag(X))
-          jitChol(X + diagDelta * DenseMatrix.eye[Double](X.rows), jit = 10.0 * jit, jit_max = jit_max, copy = copy)
+          jitChol(X + diagDelta * DenseMatrix.eye[Double](X.rows), jit = 10.0 * jit, jit_max = jit_max, copy = true)
         }
     }
   }

@@ -3,7 +3,7 @@ ThisBuild / version := "0.1-SNAPSHOT"
 
 name := "linalg"
 
-version := "0.1"
+version := "0.1-SNAPSHOT"
 
 scalaVersion := "2.13.5"
 

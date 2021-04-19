@@ -162,7 +162,7 @@ package object linalg {
           throw e
         } else {
           val diagDelta = jit * mean(diag(X))
-          jitChol(X + diagDelta * DenseMatrix.eye[Double](X.rows), jit = 10.0 * jit, jit_max = jit_max, copy = true)
+          jitChol(X + diagDelta * DenseMatrix.eye[Double](X.rows), jit = 10.0 * jit, jit_max = jit_max)
         }
     }
   }
